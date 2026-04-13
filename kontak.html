@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaidan Ammar | Kontak</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Availability badge */
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-dim);
+      border: 1px solid var(--green);
+      border-radius: var(--r-sm);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .avail-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 2.5rem;
+      transition: border-color var(--trans);
+    }
+
+    .form-card:focus-within { border-color: var(--green); }
+    .form-card h3 { font-size: 1.35rem; margin-bottom: 2rem; }
+
+    /* Success state */
+    .form-success { display: none; text-align: center; padding: 3rem 1rem; }
+    .form-success.show { display: block; animation: fadeUp 0.5s ease forwards; }
+
+    .success-box {
+      width: 64px;
+      height: 64px;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes successPop {
+      from { transform: scale(0) rotate(-10deg); }
+      to   { transform: scale(1) rotate(0); }
+    }
+
+    .form-success h3 { margin-bottom: 0.5rem; }
+
+    /* Char counter */
+    .char-hint {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-progress" id="progress"></div>
+
+  <nav class="main-nav">
+    <div class="nav-brand">Zaidan<span>.</span></div>
+    <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="kontak.html" class="active">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <div class="container">
+        <span class="label reveal">Kontak</span>
+        <h2 style="margin-bottom: 0.75rem;" class="reveal reveal-delay-1">Hubungi Saya</h2>
+        <p style="margin-bottom: 3rem; font-size: 1rem; max-width: 480px;" class="reveal reveal-delay-2">
+          Punya proyek yang ingin dibangun? Butuh developer yang bisa diandalkan dari sisi frontend maupun backend? Kirim pesan dan saya balas secepatnya.
+        </p>
+
+        <div class="grid-contact">
+
+          <!-- Kiri: info kontak -->
+          <div class="reveal reveal-delay-1">
+            <div class="avail-badge">
+              <span class="avail-dot"></span>
+              Terbuka untuk Proyek Baru
+            </div>
+
+            <div class="contact-row">
+              <span class="c-key">Lokasi</span>
+              <div class="c-val">
+                <strong>Domisili</strong>
+                <span>Jakarta Timur, Indonesia</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <span class="c-key">Email</span>
+              <div class="c-val">
+                <strong>Surat Elektronik</strong>
+                <span><a href="mailto:zaidan@email.com">zaidan@email.com</a></span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <span class="c-key">WA</span>
+              <div class="c-val">
+                <strong>WhatsApp</strong>
+                <span><a href="tel:+6281234567890">+62 812-3456-7890</a></span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <span class="c-key">Org</span>
+              <div class="c-val">
+                <strong>Khatulistiwa MAPA Paramadina</strong>
+                <span>Ketua Umum &mdash; Periode 2026–2027</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <span class="c-key">Resp</span>
+              <div class="c-val">
+                <strong>Waktu Respons</strong>
+                <span>Dalam 24 jam pada hari kerja</span>
+              </div>
+            </div>
+
+            <!-- Social links -->
+            <div class="soc-links">
+              <a href="https://github.com" target="_blank" rel="noopener" class="soc-link" title="GitHub">GH</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="soc-link" title="LinkedIn">IN</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="soc-link" title="Instagram">IG</a>
+            </div>
+
+            <!-- Tabel layanan -->
+            <h3 style="color: var(--white); margin: 2.5rem 0 1.25rem; font-size: 1.1rem;">Yang Bisa Saya Bantu</h3>
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Layanan</th>
+                    <th>Stack</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Web App Full-Stack</td>
+                    <td>Next.js, Node.js</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile App</td>
+                    <td>Flutter</td>
+                  </tr>
+                  <tr>
+                    <td>REST API &amp; Backend</td>
+                    <td>Express.js</td>
+                  </tr>
+                  <tr>
+                    <td>Dashboard &amp; Visualisasi</td>
+                    <td>React, Chart.js</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Kanan: form -->
+          <div class="reveal reveal-delay-2">
+            <div class="form-card">
+              <div id="contactForm">
+                <h3>Kirim Pesan</h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" placeholder="Nama lengkap Anda" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="instansi">Instansi / Kampus</label>
+                    <input type="text" id="instansi" name="instansi" placeholder="Opsional" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="email@contoh.com" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="telepon">Nomor Telepon / WhatsApp</label>
+                  <input type="tel" id="telepon" name="telepon" placeholder="+62 8xx-xxxx-xxxx" />
+                </div>
+
+                <div class="form-group">
+                  <label for="topik">Topik</label>
+                  <select id="topik" name="topik">
+                    <option value="">— Pilih Topik —</option>
+                    <option value="web">Pengembangan Web App</option>
+                    <option value="mobile">Pengembangan Mobile App</option>
+                    <option value="api">Backend / REST API</option>
+                    <option value="konsultasi">Konsultasi Teknis</option>
+                    <option value="kolaborasi">Kolaborasi Proyek Kampus</option>
+                    <option value="lain">Lainnya</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="pesan">Pesan</label>
+                  <textarea id="pesan" name="pesan" placeholder="Ceritakan proyek atau kebutuhan Anda..." required maxlength="500" oninput="updateChar(this)"></textarea>
+                  <div class="char-hint"><span id="charCount">0</span>/500 karakter</div>
+                </div>
+
+                <button
+                  type="button"
+                  onclick="submitForm()"
+                  class="btn btn-solid"
+                  style="width: 100%; justify-content: center; font-size: 1rem; padding: 1rem 2rem;"
+                >
+                  Kirim Pesan →
+                </button>
+              </div>
+
+              <!-- Success state -->
+              <div class="form-success" id="formSuccess">
+                <div class="success-box">✓</div>
+                <h3>Pesan Terkirim!</h3>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; max-width: 300px; margin-left: auto; margin-right: auto;">
+                  Terima kasih sudah menghubungi saya. Akan saya balas dalam 24 jam pada hari kerja.
+                </p>
+                <button
+                  class="btn btn-ghost"
+                  style="margin-top: 1.5rem;"
+                  onclick="resetForm()"
+                >
+                  Kirim Pesan Lain
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-brand">Zaidan Ammar</div>
+      <p>Web Developer · Ketua Umum Khatulistiwa MAPA Paramadina 2026–2027</p>
+      <nav class="foot-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <p style="margin-top:0.75rem; font-size:0.78rem;">&copy; 2025 Zaidan Ammar. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+    });
+
+    function updateChar(el) {
+      document.getElementById('charCount').textContent = el.value.length;
+    }
+
+    function submitForm() {
+      const nama  = document.getElementById('nama').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pesan = document.getElementById('pesan').value.trim();
+
+      if (!nama) { showError('nama', 'Nama tidak boleh kosong.'); return; }
+      if (!email) { showError('email', 'Email tidak boleh kosong.'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email', 'Format email tidak valid.'); return; }
+      if (!pesan) { showError('pesan', 'Pesan tidak boleh kosong.'); return; }
+
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    }
+
+    function showError(fieldId, msg) {
+      const el = document.getElementById(fieldId);
+      el.style.borderColor = '#e05555';
+      el.focus();
+      setTimeout(() => { el.style.borderColor = ''; }, 2000);
+      /* Simple shake */
+      el.style.animation = 'shake 0.35s ease';
+      setTimeout(() => { el.style.animation = ''; }, 350);
+    }
+
+    function resetForm() {
+      document.getElementById('contactForm').querySelector('form') &&
+        document.getElementById('contactForm').querySelector('form').reset();
+      /* Reset fields manually */
+      ['nama','instansi','email','telepon','pesan'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      document.getElementById('topik').selectedIndex = 0;
+      document.getElementById('charCount').textContent = '0';
+      document.getElementById('contactForm').style.display = 'block';
+      document.getElementById('formSuccess').classList.remove('show');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      40%       { transform: translateX(6px); }
+      60%       { transform: translateX(-4px); }
+      80%       { transform: translateX(4px); }
+    }
+  </style>
+
+</body>
+</html>

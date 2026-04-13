@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaidan Ammar | Tentang</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hl { color: var(--accent); }
+
+    /* ---- Table wrap ---- */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    /* ---- Period badge ---- */
+    .period-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-dim);
+      border: 1px solid var(--green);
+      border-radius: var(--r-sm);
+      padding: 0.35rem 0.85rem;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-progress" id="progress"></div>
+
+  <nav class="main-nav">
+    <div class="nav-brand">Zaidan<span>.</span></div>
+    <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="tentang.html" class="active">Tentang</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <div class="container">
+        <span class="label reveal">Profil</span>
+        <h2 style="margin-bottom: 3rem;" class="reveal reveal-delay-1">Tentang Saya</h2>
+
+        <div class="grid-about">
+
+          <!-- Kolom kiri: foto + data -->
+          <div class="reveal reveal-delay-1">
+            <div class="about-photo">
+              <img
+                src="image/profil.jpg"
+                alt="Zaidan Ammar"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+              />
+              <span class="photo-init" style="display:none">ZA</span>
+            </div>
+
+            <!-- Data Diri -->
+            <ul class="info-list">
+              <li>
+                <span class="info-key">Nama</span>
+                <span class="info-val">Zaidan Ammar</span>
+              </li>
+              <li>
+                <span class="info-key">Lahir</span>
+                <span class="info-val">Jakarta Timur, 4 Juni 2003</span>
+              </li>
+              <li>
+                <span class="info-key">Kampus</span>
+                <span class="info-val">Universitas Paramadina</span>
+              </li>
+              <li>
+                <span class="info-key">Organisasi</span>
+                <span class="info-val">Khatulistiwa MAPA Paramadina</span>
+              </li>
+              <li>
+                <span class="info-key">Jabatan</span>
+                <span class="info-val">Ketua Umum 2026–2027</span>
+              </li>
+              <li>
+                <span class="info-key">Email</span>
+                <a href="mailto:zaidan@email.com" class="info-val">zaidan@email.com</a>
+              </li>
+              <li>
+                <span class="info-key">Status</span>
+                <span class="info-val"><span class="tag">Terbuka untuk Proyek</span></span>
+              </li>
+            </ul>
+
+            <!-- Social -->
+            <div class="soc-links">
+              <a href="https://github.com" target="_blank" rel="noopener" class="soc-link" title="GitHub">GH</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="soc-link" title="LinkedIn">IN</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="soc-link" title="Instagram">IG</a>
+            </div>
+          </div>
+
+          <!-- Kolom kanan: narasi -->
+          <div>
+            <h3 style="font-size: 1.65rem; margin-bottom: 1.25rem;" class="reveal">
+              Saya <span class="hl">Zaidan</span>, developer yang juga seorang pelaku alam bebas.
+            </h3>
+
+            <p style="margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8;" class="reveal reveal-delay-1">
+              Lahir di Jakarta Timur pada 4 Juni 2003, saya tumbuh dengan ketertarikan kuat terhadap teknologi dan alam. Dua hal yang pada permukaan tampak berlawanan, tapi bagi saya justru saling memperkuat — disiplin di lapangan membentuk cara saya berpikir dalam menulis kode.
+            </p>
+
+            <p style="margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8;" class="reveal reveal-delay-2">
+              Sebagai Ketua Umum Khatulistiwa MAPA Paramadina periode 2026–2027, saya terbiasa memimpin tim di kondisi ekstrem, membuat keputusan cepat, dan menjaga kelompok tetap solid. Pengalaman ini langsung terbawa ke cara saya mengelola proyek-proyek digital di lingkungan kampus maupun luar kampus.
+            </p>
+
+            <div class="blockquote reveal reveal-delay-3">
+              "Di alam, tidak ada ruang untuk setengah-setengah. Begitu juga dalam kode."
+            </div>
+
+            <!-- Organisasi -->
+            <h3 style="margin: 2.5rem 0 1.25rem;" class="reveal">Organisasi</h3>
+
+            <div class="org-card reveal reveal-delay-1">
+              <div class="period-badge">2026 — 2027</div>
+              <div class="org-title">Khatulistiwa MAPA</div>
+              <div class="org-role">Ketua Umum — Universitas Paramadina</div>
+              <p>
+                Mahasiswa Pecinta Alam Universitas Paramadina. Memimpin kegiatan pendakian, panjat tebing, SAR, dan pembinaan anggota baru. Membangun budaya organisasi yang disiplin, solid, dan bertanggung jawab terhadap alam.
+              </p>
+            </div>
+
+            <!-- Hobi -->
+            <h3 style="margin: 2.5rem 0 1.25rem;" class="reveal">Minat &amp; Kegiatan</h3>
+            <div class="hobi-list reveal reveal-delay-1">
+              <div class="hobi-item"><span class="hobi-dot"></span>Mendaki Gunung</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Camping &amp; Survival</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Jalan-jalan ke Pantai</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Panjat Tebing</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Coding &amp; Dev</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Open Source</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Backpacking</div>
+              <div class="hobi-item"><span class="hobi-dot"></span>Fotografi Alam</div>
+            </div>
+
+            <!-- Pendidikan -->
+            <h3 style="margin: 2.5rem 0 1.5rem;" class="reveal">Riwayat Pendidikan</h3>
+            <div class="timeline reveal reveal-delay-1">
+              <div class="tl-item">
+                <div class="tl-year">2022 — Sekarang</div>
+                <div class="tl-title">Universitas Paramadina</div>
+                <div class="tl-sub">Mahasiswa aktif, Ketua Umum Khatulistiwa MAPA periode 2026–2027</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2019 — 2022</div>
+                <div class="tl-title">SMA Jakarta Timur</div>
+                <div class="tl-sub">Mulai belajar pemrograman secara mandiri sejak kelas 11</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2016 — 2019</div>
+                <div class="tl-title">SMP Jakarta Timur</div>
+                <div class="tl-sub">Aktif dalam kegiatan pramuka dan ekstrakurikuler alam</div>
+              </div>
+            </div>
+
+            <!-- Tabel pengalaman -->
+            <h3 style="margin: 2.5rem 0 1.25rem;" class="reveal">Pengalaman &amp; Keterlibatan Proyek</h3>
+            <div class="table-wrap reveal reveal-delay-1">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Program / Kegiatan</th>
+                    <th>Penyelenggara</th>
+                    <th>Tahun</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dashboard Belanja APBD Kemendagri</td>
+                    <td>Kemendagri RI</td>
+                    <td>2024</td>
+                  </tr>
+                  <tr>
+                    <td>Satgas PPKPT Paramadina</td>
+                    <td>Universitas Paramadina</td>
+                    <td>2023–2024</td>
+                  </tr>
+                  <tr>
+                    <td>KantinHub — Aplikasi Kantin Kampus</td>
+                    <td>Proyek Kampus</td>
+                    <td>2024</td>
+                  </tr>
+                  <tr>
+                    <td>MECX Platform</td>
+                    <td>Proyek Kampus</td>
+                    <td>2024</td>
+                  </tr>
+                  <tr>
+                    <td>Ketua Umum Khatulistiwa MAPA</td>
+                    <td>Universitas Paramadina</td>
+                    <td>2026–2027</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 2rem;" class="reveal">
+              <a href="kontak.html" class="btn btn-solid">Hubungi Saya</a>
+              <a href="portfolio.html" class="btn btn-ghost" style="margin-left: 0.85rem;">Lihat Portfolio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-brand">Zaidan Ammar</div>
+      <p>Web Developer · Ketua Umum Khatulistiwa MAPA Paramadina 2026–2027</p>
+      <nav class="foot-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <p style="margin-top:0.75rem; font-size:0.78rem;">&copy; 2025 Zaidan Ammar. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

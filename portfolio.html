@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaidan Ammar | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    /* Featured project (full width) */
+    .proj-featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .proj-featured:hover {
+      border-color: var(--green);
+      box-shadow: var(--glow);
+      transform: translateY(-4px);
+    }
+
+    .proj-featured .proj-thumb {
+      height: 100%;
+      min-height: 240px;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .proj-featured .proj-body { padding: 2.5rem; }
+
+    .proj-featured h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Status indicator */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* External link icon */
+    .ext-icon {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid currentColor;
+      border-radius: 1px;
+      position: relative;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    .ext-icon::after {
+      content: '↗';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      font-size: 9px;
+      line-height: 1;
+    }
+
+    @media (max-width: 900px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-featured { grid-template-columns: 1fr; }
+      .proj-featured .proj-thumb { border-right: none; border-bottom: 1px solid var(--border); min-height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-progress" id="progress"></div>
+
+  <nav class="main-nav">
+    <div class="nav-brand">Zaidan<span>.</span></div>
+    <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <div class="container">
+        <span class="label reveal">Karya</span>
+        <h2 style="margin-bottom: 0.75rem;" class="reveal reveal-delay-1">Portfolio Proyek</h2>
+        <p style="margin-bottom: 3rem; font-size: 1rem; max-width: 540px;" class="reveal reveal-delay-2">
+          Proyek-proyek nyata yang saya kerjakan — dari dashboard pemerintah hingga aplikasi kampus, mobile app, dan platform API.
+        </p>
+
+        <!-- Filter bar -->
+        <div class="filter-bar reveal reveal-delay-3">
+          <button class="filter-btn active" onclick="filterProj('all', this)">Semua</button>
+          <button class="filter-btn" onclick="filterProj('web', this)">Web App</button>
+          <button class="filter-btn" onclick="filterProj('mobile', this)">Mobile</button>
+          <button class="filter-btn" onclick="filterProj('backend', this)">Backend</button>
+        </div>
+
+        <!-- Projects grid -->
+        <div class="proj-grid" id="projGrid">
+
+          <!-- 1. Dashboard APBD Kemendagri — FEATURED -->
+          <div class="proj-featured proj-card reveal" data-cat="web">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #0a150a, #163016, #0a150a);">
+              <!-- Decorative grid pattern -->
+              <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.15" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="g1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="#6b9e4e" stroke-width="0.5"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#g1)"/>
+              </svg>
+              <span class="proj-thumb-text">Kemendagri</span>
+            </div>
+            <div class="proj-body">
+              <div class="status"><span class="status-dot"></span>Proyek Pemerintah</div>
+              <h3>Dashboard Belanja &amp; Pemasukan APBD</h3>
+              <p>Platform visualisasi data keuangan daerah untuk Kementerian Dalam Negeri RI. Menampilkan data belanja dan pemasukan APBD secara real-time dengan grafik interaktif dan filter multidimensi berdasarkan daerah dan periode. Satu-satunya proyek non-kampus yang saya kerjakan secara profesional.</p>
+              <div class="proj-tags" style="margin-bottom: 1.25rem;">
+                <span class="tag">Next.js</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Chart.js</span>
+                <span class="tag">REST API</span>
+              </div>
+              <div class="proj-links">
+                <!-- Ganti YOUR_VERCEL_LINK_KEMENDAGRI dengan link Vercel kamu -->
+                <a href="YOUR_VERCEL_LINK_KEMENDAGRI" target="_blank" class="btn btn-solid btn-sm">Buka Proyek ↗</a>
+                <a href="#" class="btn btn-ghost btn-sm">Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Satgas PPKPT -->
+          <div class="proj-card reveal reveal-delay-1" data-cat="web">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #0d1520, #0d2535, #0d1520);">
+              <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="g2" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.8" fill="#6b9e4e"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#g2)"/>
+              </svg>
+              <span class="proj-thumb-text">PPKPT</span>
+            </div>
+            <div class="proj-body">
+              <div class="status"><span class="status-dot"></span>Proyek Kampus</div>
+              <h3>Satgas PPKPT Paramadina</h3>
+              <p>Sistem web untuk Satuan Tugas Pencegahan dan Penanganan Kekerasan di lingkungan Universitas Paramadina. Mencakup pelaporan insiden, manajemen kasus, dan dashboard admin untuk monitoring.</p>
+              <div class="proj-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">React</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Node.js</span>
+              </div>
+              <div class="proj-links" style="margin-top: 1rem;">
+                <!-- Ganti YOUR_VERCEL_LINK_PPKPT dengan link Vercel kamu -->
+                <a href="YOUR_VERCEL_LINK_PPKPT" target="_blank" class="btn btn-solid btn-sm">Buka Proyek ↗</a>
+                <a href="#" class="btn btn-ghost btn-sm">Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. KantinHub -->
+          <div class="proj-card reveal reveal-delay-2" data-cat="mobile">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #1a0d00, #3a1a00, #1a0d00);">
+              <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="g3" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M8 0 L8 16 M0 8 L16 8" fill="none" stroke="#6b9e4e" stroke-width="0.4"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#g3)"/>
+              </svg>
+              <span class="proj-thumb-text">KantinHub</span>
+            </div>
+            <div class="proj-body">
+              <div class="status"><span class="status-dot"></span>Proyek Kampus · Mobile</div>
+              <h3>KantinHub</h3>
+              <p>Aplikasi mobile pemesanan makanan dan minuman di kantin kampus Paramadina. Fitur meliputi menu digital, pemesanan real-time, notifikasi siap diambil, dan riwayat transaksi pengguna.</p>
+              <div class="proj-tags">
+                <span class="tag">Flutter</span>
+                <span class="tag">Dart</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">REST API</span>
+              </div>
+              <div class="proj-links" style="margin-top: 1rem;">
+                <!-- Ganti YOUR_VERCEL_LINK_KANTINHUB dengan link Vercel kamu -->
+                <a href="YOUR_VERCEL_LINK_KANTINHUB" target="_blank" class="btn btn-solid btn-sm">Buka Proyek ↗</a>
+                <a href="https://github.com" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. MECX -->
+          <div class="proj-card reveal reveal-delay-3" data-cat="backend">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #1a1000, #2a2000, #1a1000);">
+              <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="g4" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 12 L24 12 M12 0 L12 24" fill="none" stroke="#6b9e4e" stroke-width="0.4"/><circle cx="12" cy="12" r="1.5" fill="#6b9e4e"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#g4)"/>
+              </svg>
+              <span class="proj-thumb-text">MECX</span>
+            </div>
+            <div class="proj-body">
+              <div class="status"><span class="status-dot"></span>Proyek Kampus · Backend</div>
+              <h3>MECX Platform</h3>
+              <p>Platform berbasis Express.js yang menyediakan layanan API untuk kebutuhan data exchange antar sistem di lingkungan kampus. Dirancang dengan arsitektur RESTful, autentikasi JWT, dan dokumentasi API yang terstruktur.</p>
+              <div class="proj-tags">
+                <span class="tag">Express.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">JWT</span>
+                <span class="tag">MySQL</span>
+              </div>
+              <div class="proj-links" style="margin-top: 1rem;">
+                <!-- Ganti YOUR_VERCEL_LINK_MECX dengan link Vercel kamu -->
+                <a href="YOUR_VERCEL_LINK_MECX" target="_blank" class="btn btn-solid btn-sm">Buka Proyek ↗</a>
+                <a href="https://github.com" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /proj-grid -->
+
+        <!-- Tabel ringkasan proyek -->
+        <h3 style="margin: 4rem 0 1.5rem; color: var(--white);" class="reveal">Ringkasan Proyek</h3>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;" class="reveal reveal-delay-1">
+          <table>
+            <thead>
+              <tr>
+                <th>Proyek</th>
+                <th>Stack Utama</th>
+                <th>Kategori</th>
+                <th>Tahun</th>
+                <th>Penyelenggara</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dashboard APBD Kemendagri</td>
+                <td>Next.js, Chart.js</td>
+                <td><span class="tag">Web App</span></td>
+                <td>2024</td>
+                <td>Kemendagri RI</td>
+              </tr>
+              <tr>
+                <td>Satgas PPKPT Paramadina</td>
+                <td>Next.js, PostgreSQL</td>
+                <td><span class="tag">Web App</span></td>
+                <td>2023</td>
+                <td>Kampus</td>
+              </tr>
+              <tr>
+                <td>KantinHub</td>
+                <td>Flutter, Firebase</td>
+                <td><span class="tag">Mobile</span></td>
+                <td>2024</td>
+                <td>Kampus</td>
+              </tr>
+              <tr>
+                <td>MECX Platform</td>
+                <td>Express.js, MySQL</td>
+                <td><span class="tag">Backend</span></td>
+                <td>2024</td>
+                <td>Kampus</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-brand">Zaidan Ammar</div>
+      <p>Web Developer · Universitas Paramadina</p>
+      <nav class="foot-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <p style="margin-top:0.75rem; font-size:0.78rem;">&copy; 2025 Zaidan Ammar. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+    });
+
+    function filterProj(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('[data-cat]').forEach(card => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.style.opacity = show ? '1' : '0';
+        card.style.transform = show ? '' : 'translateY(10px)';
+        card.style.pointerEvents = show ? '' : 'none';
+        setTimeout(() => { card.style.display = show ? '' : 'none'; }, show ? 0 : 250);
+        if (show) setTimeout(() => { card.style.opacity = '1'; card.style.transform = ''; }, 10);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

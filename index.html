@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zaidan Ammar — Frontend dan Backend Developer, Universitas Paramadina" />
+  <title>Zaidan Ammar</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- Hero layout split ---- */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+      padding: 5rem 0 4rem;
+    }
+
+    /* ---- Role pill ---- */
+    .role-pills {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .role-pill {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 3px;
+      border: 1px solid var(--green);
+      color: var(--accent);
+      background: var(--green-dim);
+      transition: all 0.25s;
+    }
+
+    .role-pill:hover {
+      background: rgba(58,90,58,0.4);
+      border-color: var(--accent);
+    }
+
+    /* ---- Big name ---- */
+    .hero-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-name .line2 {
+      color: var(--accent);
+      display: block;
+      position: relative;
+    }
+
+    /* Underline decoration on name */
+    .hero-name .line2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      animation: nameUnderline 0.8s 0.8s ease forwards;
+    }
+
+    @keyframes nameUnderline {
+      to { width: 100%; }
+    }
+
+    /* ---- Desc ---- */
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ---- CTA row ---- */
+    .cta-row {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Right panel ---- */
+    .hero-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .panel-section-title {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Stack chips */
+    .stack-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .chip {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+      transition: all var(--trans);
+    }
+
+    .chip:hover {
+      border-color: var(--green);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Panel card */
+    .panel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+      transition: border-color var(--trans);
+    }
+
+    .panel-card:hover { border-color: var(--green); }
+
+    /* Recent project item */
+    .recent-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--trans);
+    }
+
+    .recent-item:last-child { border-bottom: none; }
+    .recent-item:hover { background: rgba(107,158,78,0.03); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+    .recent-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .recent-stack {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .recent-tag {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--green);
+      border-radius: 2px;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    /* ---- Skills section ---- */
+    .skills-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .skill-domain-title {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ---- Entrance animation ---- */
+    .hero-left > * {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .role-pills  { animation-delay: 0.05s; }
+    .hero-name   { animation-delay: 0.12s; }
+    .hero-desc   { animation-delay: 0.19s; }
+    .cta-row     { animation-delay: 0.26s; }
+
+    .hero-panel {
+      animation: fadeUp 0.5s ease 0.30s both;
+    }
+
+    /* ---- Counter stat ---- */
+    .stat-row {
+      display: flex;
+      gap: 0;
+      margin-top: 2.5rem;
+      animation: fadeUp 0.5s ease 0.32s both;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 0 1rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+    .stat-item:first-child { padding-left: 0; text-align: left; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-lbl {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 4rem 0 3rem; }
+      .hero-panel { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .skills-split { grid-template-columns: 1fr; gap: 2rem; }
+      .stat-row { gap: 0; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-progress" id="progress"></div>
+
+  <nav class="main-nav">
+    <div class="nav-brand">Zaidan<span>.</span></div>
+    <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-grid-lines"></div>
+      <div class="hero-grad"></div>
+
+      <!-- Floating particles -->
+      <div class="hero-particles" id="particles"></div>
+
+      <div class="container" style="width: 100%;">
+        <div class="hero-inner">
+
+          <!-- Kiri: identitas -->
+          <div class="hero-left">
+            <div class="role-pills">
+              <span class="role-pill">Frontend</span>
+              <span class="role-pill">Backend</span>
+              <span class="role-pill">Mobile</span>
+              <span class="role-pill">Full-Stack</span>
+            </div>
+
+            <div class="hero-name">
+              Zaidan
+              <span class="line2">Ammar</span>
+            </div>
+
+            <p class="hero-desc">
+              Developer full-stack yang mengerjakan sisi frontend maupun backend. Mahasiswa aktif Universitas Paramadina sekaligus Ketua Umum Khatulistiwa MAPA — membangun aplikasi dari antarmuka sampai server, tidak setengah-setengah di keduanya.
+            </p>
+
+            <div class="cta-row">
+              <a href="portfolio.html" class="btn btn-solid">Lihat Portfolio</a>
+              <a href="kontak.html" class="btn btn-ghost">Hubungi Saya</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stat-row">
+              <div class="stat-item">
+                <span class="stat-num" data-count="4">0</span>
+                <span class="stat-lbl">Proyek Selesai</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num" data-count="3">0</span>
+                <span class="stat-lbl">Tahun Coding</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num" data-count="11">0</span>
+                <span class="stat-lbl">Tech Stack</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kanan: panel info -->
+          <div class="hero-panel">
+
+            <!-- Stack -->
+            <div class="panel-card">
+              <div class="panel-section-title">Tech Stack</div>
+              <div class="stack-chips">
+                <span class="chip">Next.js</span>
+                <span class="chip">React</span>
+                <span class="chip">Express.js</span>
+                <span class="chip">Flutter</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">TypeScript</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Firebase</span>
+                <span class="chip">REST API</span>
+                <span class="chip">Chart.js</span>
+              </div>
+            </div>
+
+            <!-- Recent work -->
+            <div class="panel-card">
+              <div class="panel-section-title">Proyek Terbaru</div>
+
+              <div class="recent-item">
+                <div>
+                  <div class="recent-name">Dashboard APBD Kemendagri</div>
+                  <div class="recent-stack">Next.js · Chart.js · TypeScript</div>
+                </div>
+                <span class="recent-tag">Web</span>
+              </div>
+
+              <div class="recent-item">
+                <div>
+                  <div class="recent-name">KantinHub</div>
+                  <div class="recent-stack">Flutter · Firebase</div>
+                </div>
+                <span class="recent-tag">Mobile</span>
+              </div>
+
+              <div class="recent-item">
+                <div>
+                  <div class="recent-name">MECX Platform</div>
+                  <div class="recent-stack">Express.js · MySQL · JWT</div>
+                </div>
+                <span class="recent-tag">API</span>
+              </div>
+
+              <div class="recent-item">
+                <div>
+                  <div class="recent-name">Satgas PPKPT</div>
+                  <div class="recent-stack">Next.js · PostgreSQL · Node.js</div>
+                </div>
+                <span class="recent-tag">Web</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILL ===== -->
+    <section>
+      <div class="container">
+        <hr style="margin-bottom: 4rem;" />
+
+        <span class="label reveal">Keahlian</span>
+        <h2 style="margin-bottom: 3rem;" class="reveal reveal-delay-1">Frontend &amp; Backend</h2>
+
+        <div class="skills-split">
+
+          <!-- Frontend -->
+          <div class="reveal reveal-delay-2">
+            <div class="skill-domain-title">Frontend</div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>HTML &amp; CSS</span><span>92%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 92%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>JavaScript / TypeScript</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 85%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>React / Next.js</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 88%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>Flutter / Dart</span><span>75%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 75%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>Responsive Design</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 90%"></div></div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="reveal reveal-delay-3">
+            <div class="skill-domain-title">Backend</div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>Node.js</span><span>82%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 82%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>Express.js</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 80%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>REST API Design</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 80%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>PostgreSQL / MySQL</span><span>72%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 72%"></div></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-head"><span>Autentikasi &amp; JWT</span><span>75%</span></div>
+              <div class="skill-track"><div class="skill-fill" style="--target-width: 75%"></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-brand">Zaidan Ammar</div>
+      <p>Frontend &amp; Backend Developer · Universitas Paramadina</p>
+      <nav class="foot-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <p style="margin-top:0.75rem; font-size:0.78rem;">&copy; 2025 Zaidan Ammar. Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ---- Progress bar ---- */
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+    });
+
+    /* ---- Floating particles ---- */
+    (function spawnParticles() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.style.cssText = `
+          left: ${Math.random() * 100}%;
+          top: ${Math.random() * 100}%;
+          animation-duration: ${6 + Math.random() * 10}s;
+          animation-delay: ${Math.random() * 8}s;
+          width: ${1 + Math.random() * 2}px;
+          height: ${1 + Math.random() * 2}px;
+          opacity: ${0.3 + Math.random() * 0.4};
+        `;
+        container.appendChild(p);
+      }
+    })();
+
+    /* ---- Counter animation ---- */
+    function animateCount(el, target, duration) {
+      let start = 0;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        el.textContent = Math.round(progress * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counters = document.querySelectorAll('[data-count]');
+    let countersDone = false;
+
+    /* ---- Scroll reveal + skill bars + counters ---- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          /* Animate skill fills */
+          entry.target.querySelectorAll('.skill-fill').forEach(fill => {
+            fill.classList.add('animated');
+          });
+
+          /* Counters (trigger once) */
+          if (!countersDone) {
+            countersDone = true;
+            counters.forEach(c => {
+              animateCount(c, parseInt(c.dataset.count), 1200);
+            });
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Also trigger skill bars when skills section enters */
+    const skillObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-fill').forEach(fill => fill.classList.add('animated'));
+          skillObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.skills-split').forEach(el => skillObs.observe(el));
+  </script>
+
+</body>
+</html>
