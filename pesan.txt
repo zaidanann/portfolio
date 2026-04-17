@@ -1,0 +1,2 @@
+File ini akan otomatis terisi saat ada pesan yang dikirim melalui form kontak.
+Data tersimpan dalam format: WAKTU | NAMA | INSTANSI | EMAIL | TELEPON | TOPIK | PESAN
